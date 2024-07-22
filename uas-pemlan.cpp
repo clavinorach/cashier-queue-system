@@ -22,25 +22,31 @@ struct StrukBelanja {
 void printStrukBelanja(const StrukBelanja& struk) {
     cout << "Nama Pelanggan : " << struk.namaPelanggan << endl;
     cout << "Daftar Produk :" << endl;
-    cout << left << setw(5) << "No" << setw(20) << "Nama Produk" << setw(10) << "Harga" << endl;
+    cout << left << setw(5) << "No" << setw(20) << "Nama Produk" << right<< setw(10) << "Harga" << endl;
     cout << "------------------------------------------" << endl;
     for (int i = 0; i < struk.jumlahProduk; i++) {
         Produk produk = struk.daftarProduk[i];
-        cout << left << setw(5) << i + 1 << setw(20) << produk.nama << setw(10) << produk.harga << endl;
+        cout << left << setw(5) << i + 1 << setw(20) << produk.nama << right << setw(10) << produk.harga << endl;
     }
     cout << "------------------------------------------" << endl;
-    cout << "Total Belanja :" << struk.totalBelanja << endl;
-    cout << "Uang Dibayarkan: " << struk.uangDibayarkan << endl;
-    cout << "Uang Kembalian: " << struk.uangKembalian << endl;
+    cout << "Total Belanja                 " << struk.totalBelanja << endl;
+    cout << "Uang Dibayarkan               " << struk.uangDibayarkan << endl;
+    cout << "Uang Kembalian                 " << struk.uangKembalian << endl;
 }
 
 int main() {
+    //Nama & NIM
+cout << "Nama : Clavino Ourizqi Rachmadi" << endl;
+cout << "NIM : 41523010140" << endl;
+cout << "Ujian Akhir Semester Pemrograman Lanjut" << endl;
+cout << "Universitas Mercu Buana" << endl;
+cout << " " << endl;
     Produk produk[] = {
-        {"sabun", 5000},
-        {"shampo", 7500},
-        {"susu", 10000},
-        {"mie instan", 2500},
-        {"telur", 5000}
+        {"Sabun", 5000},
+        {"Shampo", 7500},
+        {"Susu", 10000},
+        {"Mie Instan", 2500},
+        {"Telur", 5000}
     };
     int jumlahProdukTersedia = sizeof(produk) / sizeof(Produk);
     cout << "Daftar Produk Tersedia : " << endl;
@@ -87,6 +93,7 @@ int main() {
             cout << "Masukkan ID produk " << (i + 1) << ": ";
             cin >> idProduk;
             
+        
             // Cek ketersediaan produk
             if (idProduk >= 1 && idProduk <= jumlahProdukTersedia) {
                 Produk produkBeli = produk[idProduk - 1];
@@ -100,9 +107,11 @@ int main() {
         
         // hitung total pendapatan kasir
         totalPendapatan += struk.totalBelanja;
-
+        
+        // Menampilkan Total Belanja
+        cout << "Total Belanja : " << struk.totalBelanja << endl;
         // Menerima pembayaran dan menghitung kembalian
-        cout << "Masukkan jumlah uang yang dibayarkan (sisa yang harus dibayar " << struk.totalBelanja << "): ";
+        cout << "Masukkan jumlah uang yang dibayarkan (sisa yang harus dibayar: " << struk.totalBelanja << "): ";
         cin >> struk.uangDibayarkan;
         
         while (struk.uangDibayarkan < struk.totalBelanja) {
@@ -120,7 +129,7 @@ int main() {
     
     // tampilkan total pendapatan kasir
     cout << "Total pendapatan kasir: " << totalPendapatan << endl;
-    
+    cout << " " << endl;
     cout << "------------------------------------------" << endl;
     return 0;
 }
